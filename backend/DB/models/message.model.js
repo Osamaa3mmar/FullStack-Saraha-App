@@ -1,6 +1,6 @@
 import { DataTypes } from "sequelize";
-import sequelize from "../Connection";
-import userModel from "./user.model";
+import sequelize from "../Connection.js";
+import userModel from "./user.model.js";
 
 
 const messageModel=sequelize.define("Message",{
@@ -12,7 +12,7 @@ const messageModel=sequelize.define("Message",{
         allowNull:false,
     },
     image:{
-        type: DataTypes.String,
+        type: DataTypes.STRING,
         allowNull:true,
     },
     content:{

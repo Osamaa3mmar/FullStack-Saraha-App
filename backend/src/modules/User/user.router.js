@@ -1,12 +1,12 @@
 import {Router}from 'express';
+import { getAllUsers, getSpecificUser } from './user.controller.js';
+import { auth } from '../../middleware/auth.js';
 
 const router = Router();
 
-router.get('/',(req,res)=>{
-    return res.status(200).json({message:'ok'});
-});
+router.get('/',auth(),getAllUsers);
 
-
+router.get('/:id',auth(),getSpecificUser);
 
 
 
