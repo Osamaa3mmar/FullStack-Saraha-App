@@ -4,7 +4,7 @@ import { auth } from '../../middleware/auth.js';
 
 const router = Router();
 
-router.get('/',auth(),getAllUsers);
+router.get('/',getAllUsers);
 
 router.get('/:id',auth(),getSpecificUser);
 router.get('/profile/:id',auth(),getProfile);
