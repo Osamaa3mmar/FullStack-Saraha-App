@@ -1,8 +1,9 @@
 import {Sequelize} from "sequelize";
 
 const sequelize = new Sequelize('freedb_sarahaapp', 'freedb_0ukmm', 'dvZg#?w6e&VQBTb', {
-    port:3306,
+    
     host: 'sql.freedb.tech',
+    port:3306,
     dialect: 'mysql'
   });
 
