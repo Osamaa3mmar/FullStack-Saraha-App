@@ -11,7 +11,7 @@ const sequelize = new Sequelize('freedb_sarahaapp', 'freedb_0ukmm', 'dvZg#?w6e&V
         sequelize.sync().then(()=>{
             console.log("Connection established !");
         }).catch(()=>{
-            console.log(" connection error !");
+            console.log(" connection error  ffff!");
         })
 
 }
