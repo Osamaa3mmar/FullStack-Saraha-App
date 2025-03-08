@@ -25,7 +25,9 @@ export const getSpecificUser=async (req,res)=>{
                 {
                     model: messageModel, 
                     as: "recevedMessages", 
-                    attributes: ["id", "content","title", "createdAt"] 
+                    attributes: ["id", "content","title", "createdAt"] ,
+                    where: { status: "show" },
+                    required: false
                 }
             ]
         });
@@ -39,4 +41,47 @@ export const getSpecificUser=async (req,res)=>{
     else{
         return res.status(400).json({message:'id is not valid'});
     }
+}
+
+
+
+export const getProfile=async (req,res)=>{
+    const {id}=req.params;
+   
+    if(id){
+        if(id!=req.decoded.id){
+            return res.status(403).json({message:'Unauthorized'});
+        }
+        const user = await userModel.findOne({
+            where: { id: id },
+            attributes: ["id", "username", "profilePic", "RecevedCount"],
+            include: [
+                {
+                    model: messageModel, 
+                    as: "recevedMessages", 
+                    attributes: ["id", "content","title", "createdAt"],
+                }
+            ]
+        });
+        if(user){
+            return res.status(200).json({message:'success',user});
+        }
+        else{
+            return res.status(404).json({message:'user not found'});
+        }
+    }
+    else{
+        return res.status(400).json({message:'id is not valid'});
+    }
+}
+
+
+
+
+export const setProfileImage=async (req,res)=>{
+    const {id}=req.params;
+    if(id!=req.decoded.id){
+        return res.status(403).json({message:'Unauthorized'});
+    }
+    
 }

@@ -14,13 +14,14 @@ export const auth=()=>{
         }
         const decoded = jwt.verify(token,'saraha');
         if(decoded){
+            req.decoded=decoded;
             next();
         }
         else
         return res.status(401).json({message:'Unauthorized'});
     }
-    catch(err){
-        return res.status(401).json({message:'Unauthorized',err});
+    catch(error){
+        return res.status(401).json({message:'Unauthorized',error});
 
     }
     }
